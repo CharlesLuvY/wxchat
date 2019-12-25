@@ -15,7 +15,6 @@ class Handle(object):
         nonce = data.nonce
         echostr = data.echostr
         token = "zhanglaoguang"
-
         l = [token, timestamp, nonce]
         l.sort()
         sha1 = hashlib.sha1()
