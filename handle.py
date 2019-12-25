@@ -18,7 +18,9 @@ class Handle(object):
         l = [token, timestamp, nonce]
         l.sort()
         sha1 = hashlib.sha1()
-        map(sha1.update, l)
+        sha1.update(l[0].encode('utf-8'))
+        sha1.update(l[1].encode('utf-8'))
+        sha1.update(l[2].encode('utf-8'))
         hashcode = sha1.hexdigest()
         print("handle/GET func: hashcode, signature", hashcode, signature)
         print("echostr vlaue is :", echostr)
