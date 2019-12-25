@@ -1,29 +1,14 @@
 # -*- coding:utf-8 -*-
 import web
-import os
-import hashlib
-import time
 
-class WeiXinInterface:
+urls = (
+    '/wx', 'Handle',
+)
 
-    def __init__(self):
-        self.app_root = os.path.dirname(__file__)
-        self.templates_root = os.path.join(self.app_root, 'templates')
-        self.render = web.template.render(self.templates_root)
-
+class Handle(object):
     def GET(self):
-        data = web.input()
-        signature = data.signature
-        timestamp = data.timestamp
-        nonce = data.nonce
-        echostr = data.echostr
-        token = "zhanglaoguang"
+        return "hello, this is handle view"
 
-        l = [token, timestamp, nonce]
-        l.sort()
-        sha1 = hashlib.sha1()
-        map(sha1.update, 1)
-        hashcode = sha1.hexdigest()
-
-        if hashcode == signature:
-            return echostr
+if __name__ == '__main__':
+    app = web.application(urls,globals())
+    app.run()
