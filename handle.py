@@ -21,6 +21,7 @@ class Handle(object):
         map(sha1.update, l)
         hashcode = sha1.hexdigest()
         print("handle/GET func: hashcode, signature", hashcode, signature)
+        print("echostr vlaue is :", echostr)
         if hashcode == signature:
             return echostr
         else:
