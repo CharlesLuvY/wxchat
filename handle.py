@@ -2,9 +2,16 @@
 
 import hashlib
 import web
-
+import os
+import time
+from lxml import etree
 
 class Handle(object):
+    def __init__(self):
+        self.app_root = os.path.dirname(__file__)
+        self.templates_root = os.path.join(self.app_root, 'tempaltes')
+        self.render = web.template.render(self.templates_root)
+
     def GET(self):
 
         data = web.input()
@@ -15,6 +22,7 @@ class Handle(object):
         nonce = data.nonce
         echostr = data.echostr
         token = "zhanglaoguang"
+
         l = [token, timestamp, nonce]
         l.sort()
         sha1 = hashlib.sha1()
@@ -27,6 +35,16 @@ class Handle(object):
         if hashcode == signature:
             return echostr
         else:
-            return"啥也没返回！"
+            print("鉴权信息不匹配！")
+
+    def POST(self):
+        str_xml = web.data()
+        xml = etree.fromstring(str_xml)
+        msgType = xml.find("MsgType").text
+        fromUser = xml.find("FromUser").text
+        toUser = xml.find("Touser").text
+        if msgType == "text":
+            content = xml.find("Content").text
+            return self.render.reply_text(fromUser, toUser, time.time(), content)
 
 
