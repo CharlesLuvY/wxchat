@@ -19,7 +19,7 @@ class Handle(object):
         l = [token, timestamp, nonce]
         l.sort()
         sha1 = hashlib.sha1()
-        map(sha1.update, list)
+        map(sha1.update, l)
         hashcode = sha1.hexdigest()
         print("handle/GET func: hashcode, signature", hashcode, signature)
         if hashcode == signature:
