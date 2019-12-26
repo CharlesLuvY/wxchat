@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 class Handle(object):
     def __init__(self):
         self.app_root = os.path.dirname(__file__)
-        self.templates_root = os.path.join(self.app_root, 'tempaltes')
+        self.templates_root = os.path.join(self.app_root, 'templates')
         self.render = web.template.render(self.templates_root)
 
     def GET(self):
@@ -47,3 +47,15 @@ class Handle(object):
         if msgType == "text":
             content = root.find("Content").text
             return self.render.reply_text(fromUser, toUser, time.time(), content)
+
+
+class Test(object):
+    def __init__(self):
+        self.app_root = os.path.dirname(__file__)
+        self.templates_root = os.path.join(self.app_root, 'templates')
+        self.render = web.template.render(self.templates_root)
+
+    def GET(self):
+        print("app_root的地址是：", self.app_root)
+        print("templates_root的地址是：", self.templates_root)
+        return self.render.reply_text(1, 2, 3, 4)

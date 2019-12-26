@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 import web
-from handle import Handle
+from handle import Handle,Test
 from web.template import ALLOWED_AST_NODES
 
 ALLOWED_AST_NODES.append('Constant')
 urls = (
     '/wx', 'Handle',
+    '/tt', 'Test',
 )
 
 if __name__ == '__main__':
