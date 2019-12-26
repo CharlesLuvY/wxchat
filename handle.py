@@ -4,7 +4,8 @@ import hashlib
 import web
 import os
 import time
-from lxml import etree
+import xml.etree.ElementTree as ET
+
 
 class Handle(object):
     def __init__(self):
@@ -39,12 +40,10 @@ class Handle(object):
 
     def POST(self):
         str_xml = web.data()
-        xml = etree.fromstring(str_xml)
-        msgType = xml.find("MsgType").text
-        fromUser = xml.find("FromUser").text
-        toUser = xml.find("Touser").text
+        root = ET.parse(str_xml).getroot()
+        msgType = root.find("MsgType").text
+        fromUser = root.find("FromUser").text
+        toUser = root.find("Touser").text
         if msgType == "text":
-            content = xml.find("Content").text
+            content = root.find("Content").text
             return self.render.reply_text(fromUser, toUser, time.time(), content)
-
-
