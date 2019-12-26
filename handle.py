@@ -40,10 +40,10 @@ class Handle(object):
 
     def POST(self):
         str_xml = web.data()
-        root = ET.parse(str_xml).getroot()
+        root = ET.fromstring(str_xml)
         msgType = root.find("MsgType").text
         fromUser = root.find("FromUser").text
-        toUser = root.find("Touser").text
+        toUser = root.find("ToUser").text
         if msgType == "text":
             content = root.find("Content").text
             return self.render.reply_text(fromUser, toUser, time.time(), content)
