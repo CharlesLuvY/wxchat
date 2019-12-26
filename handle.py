@@ -47,8 +47,6 @@ class Handle(object):
         if msgType == "text":
             content = root.find("Content").text
             return self.render.reply_text(fromUser, toUser, time.time(), content)
-
-
 class Test(object):
     def __init__(self):
         self.app_root = os.path.dirname(__file__)

@@ -1,8 +1,8 @@
 $def with (toUser,fromUser,createTime,content)
 <xml>
-  <ToUserName><![CDATA[toUser]]></ToUserName>
-  <FromUserName><![CDATA[fromUser]]></FromUserName>
+  <ToUserName>$toUser</ToUserName>
+  <FromUserName>$fromUser</FromUserName>
   <CreateTime>$createTime</CreateTime>
-  <MsgType><![CDATA[text]]></MsgType>
-  <Content><![CDATA[$content]]></Content>
+  <MsgType><text</MsgType>
+  <Content>$content</Content>
 </xml>
