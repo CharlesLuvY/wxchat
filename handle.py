@@ -5,6 +5,7 @@ import web
 import os
 import time
 import xml.etree.ElementTree as ET
+import talkrob
 
 
 class Handle(object):
@@ -45,8 +46,10 @@ class Handle(object):
         fromUser = root.find("FromUser").text
         toUser = root.find("ToUser").text
         if msgType == "text":
-            content = root.find("Content").text
+            content = talkrob.talk(root.find("Content").text)
             return self.render.reply_text(fromUser, toUser, time.time(), content)
+
+
 class Test(object):
     def __init__(self):
         self.app_root = os.path.dirname(__file__)

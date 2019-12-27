@@ -1,4 +1,6 @@
-# -*- coding:utf-8 -*-
+# -*- coding: utf-8 -*-
+
+
 import web
 from handle import Handle,Test
 from web.template import ALLOWED_AST_NODES
