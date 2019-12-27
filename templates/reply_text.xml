@@ -3,6 +3,6 @@ $def with (toUser,fromUser,createTime,content)
   <ToUserName>$toUser</ToUserName>
   <FromUserName>$fromUser</FromUserName>
   <CreateTime>$createTime</CreateTime>
-  <MsgType><text</MsgType>
+  <MsgType>text</MsgType>
   <Content>$content</Content>
 </xml>

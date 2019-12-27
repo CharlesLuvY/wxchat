@@ -43,8 +43,8 @@ class Handle(object):
         str_xml = web.data()
         root = ET.fromstring(str_xml)
         msgType = root.find("MsgType").text
-        fromUser = root.find("FromUser").text
-        toUser = root.find("ToUser").text
+        fromUser = root.find("FromUserName").text
+        toUser = root.find("ToUserName").text
         if msgType == "text":
             content = talkrob.talk(root.find("Content").text)
             return self.render.reply_text(fromUser, toUser, time.time(), content)
